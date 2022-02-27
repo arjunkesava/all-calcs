@@ -1,0 +1,67 @@
+<div class="bg-light p-5 rounded">
+  <div class="col-sm-8 mx-auto">
+    <div class="row">
+      <div class="col-10"><h3>Percentage based calculator</h3></div>
+      <div class="col-2">
+        <button type="button" class="btn btn-primary pull-right" (click)="populateRandom()">Fill Random</button>
+      </div>
+    </div>
+    <form [formGroup]="gstForm">
+      <div class="row mt-sm-3">
+        <div class="col">
+          <label>Item Value</label>
+          <input
+            formControlName="itemValue"
+            class="form-control"
+            type="number"
+            placeholder="Enter item price"
+            autofocus
+          />
+        </div>
+        <div class="col">
+          <label>GST Value</label>
+          <div class="input-group">
+          <input
+            formControlName="gstValue"
+            placeholder="Enter GST % to calc"
+            class="form-control"
+            type="number"
+          />
+          <span class="input-group-text">%</span>
+        </div>
+        </div>
+        <div class="col">
+          <label>Is it included in the bill?</label>
+          <select class="form-select" formControlName="calcType">
+            <option value="add" selected>(+) Inclusive</option>
+            <option value="subtract">(-) Exclusive</option>
+          </select>
+        </div>
+      </div>
+      <div class="row mt-sm-3">
+        <div class="col">
+          <label>Net Amount:</label>
+          <input
+            [value]="gstResult.netAmount"
+            class="form-control"
+            disabled="true"
+          />
+        </div>
+        <div class="col">
+          <label>GST Amount</label>
+          <div class="input-group">
+          <input
+            [value]="gstResult.gstAmount"
+            class="form-control"
+            disabled="true"
+          />
+        </div>
+        </div>
+        <div class="col">
+          <label>Gross Amount</label>
+          <h2>₹ {{ gstResult.grossAmount }}</h2>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
